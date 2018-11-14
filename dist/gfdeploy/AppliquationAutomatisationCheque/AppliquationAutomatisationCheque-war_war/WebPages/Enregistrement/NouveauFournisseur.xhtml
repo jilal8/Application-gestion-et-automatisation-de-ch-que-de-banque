@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Enrégistement Fournisseur</title>
+        <h:outputStylesheet library="css" name="TP4_css_file.css"/>
+         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+    </h:head>
+    <h:body>
+        <div id="tailleapp">
+            <h:form>
+                <p:megaMenu autoDisplay="true">
+                    <p:menuitem value="Accueil" url="../../principal_page.xhtml" icon="ui-icon-home"/>
+                    <p:menuitem value="Quitter" url="../../principal_page.xhtml" icon="ui-icon-close"/>
+                </p:megaMenu>
+            </h:form>
+            <br></br> 
+            <h3>Bienvenu dans la page l'enregistrement des Fournisseur</h3>
+           
+            <div id="liste">
+                <f:view>
+
+
+                    <h:form>
+                        <p:growl id="growl" />
+                        <h1>Saisie d'un nouveau Fournisseur</h1>
+                        <p:fieldset id="facture" legend="Information fournisseur" style="margin-top:20px">
+                            <p:panelGrid columns="2">
+
+                                <p:outputLabel value="Nom:" for="nom" />
+                                <p:inputText id="nom" value="#{fournisseurBean.fournisseur.nom}" title="Nom" required="true" requiredMessage="The Nom field is required." size="58"/>
+                                <p:outputLabel value="Telephone:" for="telephone" />
+                                <p:inputMask id="telephone" value="#{fournisseurBean.fournisseur.telephone}" title="Telephone" required="true" requiredMessage="The Telephone field is required." mask="77999999" size="58"/>
+                                <p:outputLabel value="Email:" for="email" />
+                                <p:inputText id="email" value="#{fournisseurBean.fournisseur.email}" title="Email" required="true" requiredMessage="The Email field is required." size="58"/>
+                                <p:outputLabel value="Adresse:" for="adresse" />
+                                <p:inputText id="adresse" value="#{fournisseurBean.fournisseur.adresse}" title="Adresse" required="true" requiredMessage="The Adresse field is required." size="58"/>
+                            </p:panelGrid>
+                                    <h:panelGrid border="0" columns="1" style="float: right">
+                            <p:commandButton value="Annuler" action="#{fournisseurBean.cancel()}" icon="ui-icon-close" update="growl" ajax="false"/>
+                            
+                        </h:panelGrid>
+                        <h:panelGrid border="0" columns="1" style="float: left">
+                            
+                            <p:commandButton value="Enregistrer" action="#{fournisseurBean.createFournisseur()}" icon="ui-icon-check" update="growl" ajax="false"/>
+                        </h:panelGrid>
+                        </p:fieldset>
+                
+
+                    </h:form>
+                </f:view>
+
+                <div id="footer">
+                    <ui:include src="../../WEB-INF/templ/templates/footer.xhtml"/>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+

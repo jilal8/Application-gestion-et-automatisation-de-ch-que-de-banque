@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/web/WebPages/Gestion/DetailsCheque.xhtml</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/web/resources/css/TP4_css_file.css</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/web/WebPages/Enregistrement/NouveauFournisseur.xhtml</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/web/WEB-INF/faces-config.xml</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/src/java/beans/fournisseurBean.java</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/web/WebPages/Gestion/ListeCheques.xhtml</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/src/java/cbb/ConnectionBD.java</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/web/WebPages/Gestion/ModifierFournisseur.xhtml</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/web/WebPages/Gestion/ModifierFacture.xhtml</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/web/WebPages/Gestion/listFacture.xhtml</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/web/WebPages/Gestion/ModifierCheque.xhtml</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/web/WebPages/Enregistrement/detailFacture.xhtml</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/web/WebPages/Gestion/ListeDeFournisseur.xhtml</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/src/java/beans/chequeBeans.java</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/test/beans/chequeBeansTest.java</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/src/java/beans/factureBean.java</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/web/principal_page.xhtml</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/web/WebPages/Enregistrement/NouvelleFacture.xhtml</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/test/cbb/ConnectionBDTest.java</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/test/beans/factureBeanTest.java</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/web/WebPages/Enregistrement/NouveauCheque.xhtml</file>
+            <file>file:/C:/Users/ismas/Documents/NetBeansProjects/AppliquationAutomatisationCheque/AppliquationAutomatisationCheque-war/test/beans/fournisseurBeanTest.java</file>
+        </group>
+    </open-files>
+</project-private>

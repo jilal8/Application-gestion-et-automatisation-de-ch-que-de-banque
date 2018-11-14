@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="TP4_css_file.css"/>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+    </h:head>
+    <h:body>
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewParam name="idfacture" value="#{factureBean.idfacture}" />
+                <f:viewAction action="#{factureBean.loadFacture()}"/> 
+            </f:metadata>
+        </ui:define>
+
+        <div id="tailleapp">
+            <h:form>
+                <p:megaMenu autoDisplay="true">
+                    <p:menuitem value="Accueil" url="../../principal_page.xhtml" icon="ui-icon-home"/>
+                    <p:menuitem value="Quitter" url="../../principal_page.xhtml" icon="ui-icon-close"/>
+                </p:megaMenu>
+            </h:form>
+            <br></br> 
+            <h3>Modification facture</h3>
+
+            <div id="liste">
+                <f:view>
+                    <h:form>
+                        <h:panelGrid border="0" columns="1" style="float: left">
+                            <p:commandButton value="Retour a la liste" icon="ui-icon-close" action="#{factureBean.redirection()}" ajax="false"/>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
+                <p:panel header="Informtion a modifier pour le facture">
+                    <f:view>
+                        <h:form>
+
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="Id:" for="id" />
+                                <p:inputText id="id" value="#{factureBean.facture.id}" type="hidden" title="Id" required="true" requiredMessage="The Id field is required."/>
+                                <p:outputLabel value="Numero:" for="numero" />
+                                <p:inputText id="numero" value="#{factureBean.facture.numero}" title="Numero" required="true" requiredMessage="The Numero field is required."/>
+                                <p:outputLabel value="Datereglement:" for="datereglement" />
+                                <p:inputText id="datereglement" value="#{factureBean.facture.datereglement}" title="Datereglement" required="true" requiredMessage="The Datereglement field is required.">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </p:inputText>
+                                <p:outputLabel value="Montant:" for="montant" />
+                                <p:inputText id="montant" value="#{factureBean.facture.montant}" title="Montant" required="true" requiredMessage="The Montant field is required."/>
+                                <p:outputLabel value="Etat:" for="etat" />
+                                <p:inputText id="etat" value="#{factureBean.facture.etat}" title="Etat" required="true" requiredMessage="The Etat field is required."/>
+                                <p:outputLabel value="Fournisseur:" for="fournisseur" />
+                                <p:selectOneMenu id="fournisseur" value="#{factureBean.id_fournisseur}" >
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItems value="#{factureBean.listefournisseur}" var="f" itemLabel="#{f.nom}" itemValue="#{f.id}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Cheque:" for="cheque" />
+                                <p:selectOneMenu id="cheque" value="#{factureBean.idcheque}" >
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItems value="#{factureBean.listcheque}" var="c" itemLabel="#{c.numeroCheque}" itemValue="#{c.id}"/>
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                            <h:panelGrid border="0" columns="1" style="float: left">
+                                <p:commandButton value="save" icon="ui-icon-check" action="#{factureBean.edit()}" ajax="false"/>
+                            </h:panelGrid>
+                            <h:panelGrid border="0" columns="1" style="float: right">
+                                <p:commandButton value="cancel" icon="ui-icon-close" action="#{factureBean.cancel()}" ajax="false"/>
+                            </h:panelGrid>
+
+                        </h:form>
+                    </f:view>
+
+
+                </p:panel>
+            </div>
+            <div id="footer">
+                <ui:include src="../../WEB-INF/templ/templates/footer.xhtml"/>
+            </div>
+        </div>
+    </h:body>
+</html>
+

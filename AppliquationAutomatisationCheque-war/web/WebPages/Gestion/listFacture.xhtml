@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head><h:outputStylesheet library="css" name="TP4_css_file.css"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+    <h:body>
+        <div id="tailleapp">
+            <h:form>
+                <p:megaMenu autoDisplay="true">
+                    <p:menuitem value="Accueil" url="../../principal_page.xhtml" icon="ui-icon-home"/>
+                    <p:menuitem value="Quitter" url="../../principal_page.xhtml" icon="ui-icon-close"/>
+                </p:megaMenu>
+            </h:form>
+            <br></br> 
+            <h3><u>Liste des Factures</u></h3>
+
+            <div id="liste">
+                <f:view>
+
+
+                    <h:form>
+                      
+                        <p:dataTable value="#{factureBean.listefacture}" var="item"
+                                     widgetVar="factureTable" 
+                                     emptyMessage="no facture found" 
+                                     filteredValue="#{factureBean.filteredFacture}"
+                                     paginator="true"
+                                     rows="5"
+                                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}">
+                            <p:column filterBy="#{item.id}" footerText="contains" filterMatchMode="contains">
+                                <f:facet name="header">
+                                    <h:outputText value="Id"/>
+                                </f:facet>
+                                <h:outputText value="#{item.id}"/>
+                            </p:column>
+                            <p:column filterBy="#{item.datereglement}" footerText="contains" filterMatchMode="contains">
+                                <f:facet name="header">
+                                    <h:outputText value="Date"/>
+                                </f:facet>
+                                <h:outputText value="#{item.datereglement}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column filterBy="#{item.montant}" footerText="contains" filterMatchMode="contains">
+                                <f:facet name="header">
+                                    <h:outputText value="Montant"/>
+                                </f:facet>
+                                <h:outputText value="#{item.montant}"/>
+                            </p:column>
+                            <p:column filterBy="#{item.etat}" footerText="contains" filterMatchMode="contains">
+                                <f:facet name="header">
+                                    <h:outputText value="Etat"/>
+                                </f:facet>
+                                <h:outputText value="#{item.etat}"/>
+                            </p:column>
+                            <p:column filterBy="#{item.cheque.numeroCheque}" footerText="contains" filterMatchMode="contains">
+                                <f:facet name="header">
+                                    <h:outputText value="Cheque"/>
+                                </f:facet>
+                                <h:outputText value="#{item.cheque.numeroCheque}"/>
+                            </p:column>
+                            <p:column filterBy="#{item.numero}" footerText="contains" filterMatchMode="contains">
+                                <f:facet name="header">
+                                    <h:outputText value="Numero"/>
+                                </f:facet>
+                                <h:outputText value="#{item.numero}"/>
+                            </p:column>
+                            <p:column filterBy="#{item.fournisseur.nom}" footerText="contains" filterMatchMode="contains">
+                                <f:facet name="header">
+                                    <h:outputText value="Fournisseur"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fournisseur.nom}"/>
+                            </p:column>
+                            <p:column exportable="false" styleClass="colonneinscriptionentete" style="width:60px; text-align: center">
+                                <f:facet name="header">
+                                    <h:outputText value="Editer" styleClass="colonneinscriptionentete"/>
+                                </f:facet>
+                                <h:link outcome="ModifierFacture" styleClass="colonneinscription" value="Modifier">
+                                    <f:param name="idfacture" value="#{item.id}"/>                                            
+                                </h:link>
+                            </p:column>
+                            <p:column exportable="false" styleClass="colonneinscriptionentete" style="width:90px; text-align: center">
+                                <f:facet name="header">
+                                    <h:outputText value="Supprimer" styleClass="colonneinscriptionentete"/>
+                                </f:facet>
+
+                                <p:commandButton value="Supprimer" actionListener="#{factureBean.SupprimerFacture(item.id)}">
+                                    <p:confirm header="Confirmation" message="Etes vous vraiment sûre de vouloire supprimer?" icon="ui-icon-alert" />
+                                    <f:setPropertyActionListener target="#{factureBean.facture}" value="#{item}"/>
+                                </p:commandButton>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <h:panelGrid border="0" columns="1" style="float: left">
+                                        <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    </h:panelGrid>
+                                    <h:panelGrid border="0" columns="1" style="float: right">
+                                        <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                    </h:panelGrid>
+                                </p:confirmDialog>
+                            </p:column>
+
+
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+
+            </div>
+            <div id="footer">
+                <ui:include src="../../WEB-INF/templ/templates/footer.xhtml"/>
+            </div>
+        </div>
+    </h:body>
+</html>
+

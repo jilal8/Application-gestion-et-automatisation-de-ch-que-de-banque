@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewParam name="idinscription" value="#{chequeBeans.idSelectedFacture}" />
+                <f:viewAction action="#{chequeBeans.loadfacture()}"/> 
+            </f:metadata>
+        </ui:define>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Id:" for="id" />
+                    <p:outputLabel id="id" value="#{chequeBeans.selectedFACTURE.id}" title="Id" />
+                    <p:outputLabel value="Numero:" for="numero" />
+                    <p:outputLabel id="numero" value="#{chequeBeans.selectedFACTURE.numero}" title="Numero" />
+                    <p:outputLabel value="Datereglement:" for="datereglement" />
+                    <p:outputLabel id="datereglement" value="#{chequeBeans.selectedFACTURE.datereglement}" title="Datereglement" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:outputLabel>
+                    <p:outputLabel value="Montant:" for="montant" />
+                    <p:outputLabel id="montant" value="#{chequeBeans.selectedFACTURE.montant}" title="Montant" />
+                    <p:outputLabel value="Etat:" for="etat" />
+                    <p:outputLabel id="etat" value="#{chequeBeans.selectedFACTURE.etat}" title="Etat" />
+                  
+                </p:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

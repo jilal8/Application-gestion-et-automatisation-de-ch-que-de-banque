@@ -1,0 +1,58 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 26 déc. 2016, 11:28:52
+    Author     : ismas
+*/
+
+#tailleapp{
+    width: auto;
+    height: auto;
+    background-color: #5bc0de;
+    text-align: center;
+    position: center;
+    left: 400px;
+    margin-left: 100px;
+    margin-right:100px;
+}
+#tailleapp #footer{
+    background-color: #99ccff;
+    height: 40px;
+   
+}
+#tailleapp #footer #footerr{
+    padding-top: 5px;
+    
+}
+
+#labdl{
+    font-family: monospace, sans-serif;
+    font-size: 40px;
+    color: crimson;
+    background-color: #ffffff;
+}
+
+#footer{
+    background-color: #99ccff;
+    height: 40px;
+    text-align: center;
+}
+#liste{
+    height: auto;
+    background-image: url('../../img/universite-de-djibouti-640x330.jpg');
+    text-align: inherit;
+}
+#btnN{
+    text-align: inherit;
+    position: inherit;
+}
+body{
+    background-color:  background;
+    
+}
+#form{
+    text-align: center;
+}

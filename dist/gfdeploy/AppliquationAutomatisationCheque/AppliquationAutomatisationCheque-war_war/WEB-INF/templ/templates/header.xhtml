@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <ui:composition>
+            <h:form>
+                <p:megaMenu autoDisplay="true">
+                    <p:submenu label="Gestion de chèque" icon="ui-icon_check">
+                        <p:column>
+                            <p:submenu label="Chèque">
+                                <p:menuitem value="Liste des Chèques" url="WebPages/Gestion/ListeCheques.xhtml"/>
+                                <p:menuitem value="Saisir un nouveau Chèque" url="WebPages/Enregistrement/NouveauCheque.xhtml" icon="ui-icon-plusthick
+ "/>
+                            </p:submenu>
+                        </p:column>
+                    </p:submenu>
+                    <p:submenu label="Gestion des fournisseurs" icon="ui-icon_check">
+                        <p:column>
+                            <p:submenu label="Fournisseur">
+                                <p:menuitem value="Liste des Fournisseurs" url="/WebPages/Gestion/ListeDeFournisseur.xhtml"/>
+                                <p:menuitem value="Saisir un Fournisseur" url="/WebPages/Enregistrement/NouveauFournisseur.xhtml" icon="ui-icon-plusthick
+ "/>
+                            </p:submenu>
+                        </p:column>
+                    </p:submenu>
+                    <p:submenu label="Gestion des Facturs" icon="ui-icon_check">
+                        <p:column>
+                            <p:submenu label="Facture">
+                                <p:menuitem value="Liste des Factures" url="/WebPages/Gestion/listFacture.xhtml"/>
+                                <p:menuitem value="Saisir une nouvelle Facture" url="/WebPages/Enregistrement/NouvelleFacture.xhtml" icon="ui-icon-plusthick
+ "/>
+                            </p:submenu>
+                        </p:column>
+                    </p:submenu>
+                    <p:menuitem value="Quitter" url="principal_page.xhtml" icon="ui-icon-power"/>
+                </p:megaMenu>
+            </h:form>
+        </ui:composition>
+    </h:body>
+</html>
+

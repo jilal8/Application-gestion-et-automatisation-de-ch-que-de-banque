@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="TP4_css_file.css"/>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+    </h:head>
+    <h:body>
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewParam name="idinscription" value="#{fournisseurBean.idfournisseur}" />
+                <f:viewAction action="#{fournisseurBean.loadFournisseur()}"/> 
+            </f:metadata>
+        </ui:define>
+        <div id="tailleapp">
+            <h:form>
+                <p:megaMenu autoDisplay="true">
+                    <p:menuitem value="Accueil" url="../../principal_page.xhtml" icon="ui-icon-home"/>
+                    <p:menuitem value="Quitter" url="../../principal_page.xhtml" icon="ui-icon-close"/>
+                </p:megaMenu>
+            </h:form>
+            <br></br> 
+            <h3>Modification Fournisseur</h3>
+
+            <div id="liste">
+                <p:panel header="Informtion a modifier pour le fournisseur">
+                    <f:view>
+
+
+                        <h:form>
+                            <h:panelGrid border="0" columns="1" style="float: left">
+                                <p:commandButton value="Retour a la liste" icon="ui-icon-close" action="#{fournisseurBean.redirection()}" ajax="false"/>
+                            </h:panelGrid>
+                            <h1><h:outputText value="Edit"/></h1>
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="Id:" for="id" />
+                                <p:inputText id="id" value="#{fournisseurBean.fournisseur.id}" size="56" title="Id" type="hidden" required="true" requiredMessage="The Id field is required."/>
+                                <p:outputLabel value="Nom:" for="nom" />
+                                <p:inputText id="nom" value="#{fournisseurBean.fournisseur.nom}" title="Nom" required="true" requiredMessage="The Nom field is required."/>
+                                <p:outputLabel value="Telephone:" for="telephone" />
+                                <p:inputText id="telephone" value="#{fournisseurBean.fournisseur.telephone}" title="Telephone" required="true" requiredMessage="The Telephone field is required."/>
+                                <p:outputLabel value="Email:" for="email" />
+                                <p:inputText id="email" value="#{fournisseurBean.fournisseur.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
+                                <p:outputLabel value="Adresse:" for="adresse" />
+                                <p:inputText id="adresse" value="#{fournisseurBean.fournisseur.adresse}" title="Adresse" required="true" requiredMessage="The Adresse field is required."/>
+                                <p:commandButton value="save" icon="ui-icon-check" action="#{fournisseurBean.edit()}" ajax="false"/>
+                                <p:commandButton value="cancel" icon="ui-icon-close" action="#{fournisseurBean.cancel()}" ajax="false"/>
+                            </p:panelGrid>
+                        </h:form>
+                    </f:view>
+
+                </p:panel>
+            </div>
+            <div id="footer">
+                <ui:include src="../../WEB-INF/templ/templates/footer.xhtml"/>
+            </div>
+        </div>
+    </h:body>
+</html>
+

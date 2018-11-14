@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="555" pageHeight="802" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="9498582e-14f1-4ab0-9cd5-1b025899e523">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="84"/>
+	<parameter name="idcheque" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     cheque.`id` AS cheque_id,
+     cheque.`Datecheque` AS cheque_Datecheque,
+     cheque.`montant` AS cheque_montant,
+     cheque.`NumeroCheque` AS cheque_NumeroCheque,
+     cheque.`compt_id` AS cheque_compt_id,
+     cheque.`banque_id` AS cheque_banque_id,
+     cheque.`fournisseur_id` AS cheque_fournisseur_id,
+     cheque.`ESTBAREE_id` AS cheque_ESTBAREE_id,
+     cheque.`montantLettre` AS cheque_montantLettre,
+     fournisseur.`id` AS fournisseur_id,
+     fournisseur.`nom` AS fournisseur_nom,
+     fournisseur.`telephone` AS fournisseur_telephone,
+     fournisseur.`email` AS fournisseur_email,
+     fournisseur.`adresse` AS fournisseur_adresse
+FROM
+     `cheque` cheque INNER JOIN `fournisseur` fournisseur ON cheque.`fournisseur_id` = fournisseur.`id`
+WHERE
+     cheque.`id` = $P{idcheque}]]>
+	</queryString>
+	<field name="cheque_id" class="java.lang.Integer"/>
+	<field name="cheque_Datecheque" class="java.sql.Date"/>
+	<field name="cheque_montant" class="java.lang.Integer"/>
+	<field name="cheque_NumeroCheque" class="java.lang.String"/>
+	<field name="cheque_compt_id" class="java.lang.Integer"/>
+	<field name="cheque_banque_id" class="java.lang.Integer"/>
+	<field name="cheque_fournisseur_id" class="java.lang.Integer"/>
+	<field name="cheque_ESTBAREE_id" class="java.lang.Integer"/>
+	<field name="cheque_montantLettre" class="java.lang.String"/>
+	<field name="fournisseur_id" class="java.lang.Integer"/>
+	<field name="fournisseur_nom" class="java.lang.String"/>
+	<field name="fournisseur_telephone" class="java.lang.Integer"/>
+	<field name="fournisseur_email" class="java.lang.String"/>
+	<field name="fournisseur_adresse" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="54" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="15" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="13" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="249" splitType="Stretch">
+			<textField>
+				<reportElement x="419" y="26" width="100" height="20" uuid="8dc7832c-7d97-4a90-a7e2-0ad39d5c7472"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cheque_Datecheque}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="65" width="59" height="20" uuid="a7dc253d-654e-472b-9700-d418913bf34b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cheque_montant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="420" y="65" width="26" height="20" uuid="1611e572-9dfb-4d8f-b6f7-1fa5b791a6fb"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[##]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="505" y="65" width="29" height="20" uuid="53aef2a2-6ecf-4770-80be-28c2d73073d4"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[##]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="29" y="193" width="100" height="20" uuid="a2f3d4a3-94a7-4da9-8bca-7f374e859a5f"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cheque_NumeroCheque}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="28" y="148" width="514" height="20" uuid="6bc3e646-2df8-4ff8-958a-d8a93173d79d"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cheque_montantLettre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="34" y="108" width="508" height="20" uuid="5d86e3d0-784f-4293-8b3d-b58dda0a8ef5"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fournisseur_nom}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="133" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

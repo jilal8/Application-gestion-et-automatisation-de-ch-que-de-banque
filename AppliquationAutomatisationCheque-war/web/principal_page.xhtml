@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Page d'accueil</title>
+           <h:outputStylesheet library="css" name="TP4_css_file.css"/>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <ui:composition template="WEB-INF/templ/model.xhtml">
+            <ui:define name="contenu">
+               
+                <h2>Bienveu dans l'application gestion et d'automatisation de Chèque de Banque</h2>
+                <br></br>
+                <img src="img/djibouti-islamic-banking-2015.jpg" width="100%" height="400" alt="bg"/>
+                <div id="labdl">
+                    LABDL 2016/2017
+                </div>
+            </ui:define>
+        </ui:composition>
+            </h:form>
+        </f:view>
+         
+
+
+    </h:body>
+</html>
+

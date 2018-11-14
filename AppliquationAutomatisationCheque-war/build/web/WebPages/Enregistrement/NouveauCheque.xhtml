@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Enrégistement Chèque</title>
+        <h:outputStylesheet library="css" name="TP4_css_file.css"/>
+         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+    </h:head>
+    <h:body>
+        <div id="tailleapp">
+            <h:form>
+                <p:megaMenu autoDisplay="true">
+                    <p:menuitem value="Accueil" url="../../principal_page.xhtml" icon="ui-icon-home"/>
+                    <p:menuitem value="Quitter" url="../../principal_page.xhtml" icon="ui-icon-close"/>
+                </p:megaMenu>
+            </h:form>
+            <br></br> 
+            
+            <h3>Bienvenu dans la page l'enregistrement des Chèques</h3>
+            
+            <div id="liste">
+                <p:fieldset legend="Formulaite enregistrement cheque">
+                    
+                    <h:form id="carForm">
+                        <p:growl id="growl" />
+                        <p:fieldset id="fac" legend="liste de facture non regle">
+                           
+                            <p:dataTable id="availableCars" var="car" value="#{chequeBeans.listeFacture}" selection="#{chequeBeans.dropFacture}" rowKey="#{car.id}" style="margin-bottom:0">
+                              <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+
+                                <p:column headerText="Id">
+                                    <h:outputText value="#{car.id}" />
+                                </p:column>
+
+                                <p:column headerText="Date">
+                                    <h:outputText value="#{car.datereglement}" />
+                                </p:column>
+
+                                <p:column headerText="fournisseur">
+                                    <h:outputText value="#{car.fournisseur.nom}" />
+                                </p:column>
+
+                                <p:column headerText="Numero">
+                                    <h:outputText value="#{car.numero}" />
+                                </p:column>
+                                <p:column headerText="Montant">
+                                    <h:outputText value="#{car.montant}" />
+                                </p:column>
+                            </p:dataTable>
+                        </p:fieldset>
+
+                      <p:panelGrid columns="2">
+                            <p:outputLabel value="Montant:" for="montant" />
+                            <p:inputText id="montant" value="#{chequeBeans.cheque.montant}" title="Montant" requiredMessage="le champs montant est obligatoir."/>
+                            <p:outputLabel value="Compt:" for="compt" />
+                            <p:selectOneMenu id="compt" value="#{chequeBeans.id_compte}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                
+                                <f:selectItems value="#{chequeBeans.listCompte}" var="c" itemLabel="#{c.nom}" itemValue="#{c.id}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Fournisseur:" for="fournisseur" />
+                            <p:selectOneMenu id="fournisseur" value="#{chequeBeans.id_fournisseur}">
+                                <!-- TODO: update below reference to list of available items-->
+                                
+                                <f:selectItems value="#{chequeBeans.lisrFournisseur}" var="f" itemLabel="#{f.nom}" itemValue="#{f.id}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Banque:" for="banque" />
+                            <p:selectOneMenu id="banque" value="#{chequeBeans.id_banque}" >
+                                <!-- TODO: update below reference to list of available items-->
+                               
+                                <f:selectItems value="#{chequeBeans.listBanque}" var="b" itemLabel="#{b.nom}" itemValue="#{b.id}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="EtatCheque" for="barre" />
+                            <p:selectOneMenu id="barre" value="#{chequeBeans.id_barree}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems   itemLabel="" itemValue="0"/>
+                                <f:selectItems value="#{chequeBeans.listBaree}" var="u" itemLabel="#{u.libelle}" itemValue="#{u.id}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="NumeroC:" for="numeroC" />
+                            <p:inputText id="numeroC" value="#{chequeBeans.cheque.numeroCheque}" title="NumeroC" required="true" requiredMessage="Vous devez renseigner le champs numero de cheque."/>
+                        </p:panelGrid>
+                        <h:panelGrid border="0" columns="1" style="float:  left">
+                            <p:commandButton icon="ui-icon-check"  value="Enregistrer" styleClass="enr" action="#{chequeBeans.createCheque()}" update="growl" ajax="false"/>
+                        </h:panelGrid>
+                        <h:panelGrid border="0" columns="1" style="float: right">
+                            <p:commandButton icon="ui-icon-close"  value="Abondonner" styleClass="enr" action="#{chequeBeans.cancel()}" ajax="false"/>
+                        </h:panelGrid>
+                    </h:form>
+                </p:fieldset>
+
+
+            </div>
+            <div id="footer">
+                <ui:include src="../../WEB-INF/templ/templates/footer.xhtml"/>
+            </div>
+        </div>
+    </h:body>
+</html>
+

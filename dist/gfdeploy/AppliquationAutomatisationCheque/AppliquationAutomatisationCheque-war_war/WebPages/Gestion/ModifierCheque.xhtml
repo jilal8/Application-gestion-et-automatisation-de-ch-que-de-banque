@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="TP4_css_file.css"/>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+    </h:head>
+    <h:body>
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewParam name="idcheque" value="#{chequeBeans.idcheque}" />
+                <f:viewAction action="#{chequeBeans.loadcheque()}"/> 
+            </f:metadata>
+        </ui:define>
+
+        <div id="tailleapp">
+            <h:form>
+                <p:megaMenu autoDisplay="true">
+                    <p:menuitem value="Accueil" url="../../principal_page.xhtml" icon="ui-icon-home"/>
+                    <p:menuitem value="Quitter" url="../../principal_page.xhtml" icon="ui-icon-close"/>
+                </p:megaMenu>
+            </h:form>
+            <br></br> 
+            <h3>Modification cheque</h3>
+
+            <div id="liste">
+                <f:view>
+                    <h:form>
+                        <h:panelGrid border="0" columns="1" style="float: left">
+                            <p:commandButton value="Retour a la liste" icon="ui-icon-close" action="#{chequeBeans.redirection()}" ajax="false"/>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
+                <p:panel header="Informtion a modifier pour le cheque">
+                    <f:view>
+
+
+                        <h:form>
+                            
+                            <p:column>
+                                <fieldset>
+                                    <legend> Information sur le cheque</legend>
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel value="Id:" for="id" />
+                                        <p:inputText type="hidden" id="id" value="#{chequeBeans.cheque.id}" title="Id" required="true" requiredMessage="The Id field is required."/>
+                                        <p:outputLabel value="Datecheque:" for="datecheque" />
+                                        <p:inputText id="datecheque" value="#{chequeBeans.cheque.datecheque}" title="Datecheque" required="true" requiredMessage="The Datecheque field is required.">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </p:inputText>
+                                        <p:outputLabel value="Montant:" for="montant" />
+                                        <p:inputText id="montant" disabled="true" value="#{chequeBeans.cheque.montant}" title="Montant" required="true" requiredMessage="The Montant field is required."/>
+                                        <p:outputLabel value="NumeroCheque:" for="numeroCheque" />
+                                        <p:inputText id="numeroCheque" value="#{chequeBeans.cheque.numeroCheque}" title="NumeroCheque" required="true" requiredMessage="The NumeroCheque field is required."/>
+                                        <p:outputLabel value="Compt:" for="compt" />
+                                        <p:selectOneMenu id="compt" value="#{chequeBeans.id_compte}" >
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{chequeBeans.listCompte}" var="c" itemLabel="#{c.nom}" itemValue="#{c.id}"/>
+                                        </p:selectOneMenu>
+                                        <p:outputLabel value="Fournisseur:" for="fournisseur" />
+                                        <p:selectOneMenu id="fournisseur" value="#{chequeBeans.id_fournisseur}" >
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{chequeBeans.lisrFournisseur}" var="f" itemLabel="#{f.nom}" itemValue="#{f.id}"/>
+                                        </p:selectOneMenu>
+                                        <p:outputLabel value="Banque:" for="banque" />
+                                        <p:selectOneMenu id="banque" value="#{chequeBeans.id_banque}" >
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{chequeBeans.listBanque}" var="b" itemValue="#{b.id}" itemLabel="#{b.nom}"/>
+                                        </p:selectOneMenu>
+                                        <p:outputLabel value="EstBaree:" for="estBaree" />
+                                        <p:selectOneMenu id="estBaree" value="#{chequeBeans.id_barree}" >
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{chequeBeans.listBaree}" var="br" itemLabel="#{br.libelle}" itemValue="#{br.id}"/>
+                                        </p:selectOneMenu>
+                                    </p:panelGrid>
+                                </fieldset>
+                            </p:column>
+                            <fieldset>
+                                <legend>Liste de facture reglé par ce chéque</legend>
+                                <p:panel rendered="#{chequeBeans.cheque.facture.size() > 0}" header="Liste de facture reglé par ce chéque"  >
+                                    <p:dataTable id="tblfac" value="#{chequeBeans.cheque.facture}" var="fac">
+                                        <p:column filterBy="#{fac.id}" footerText="contains" filterMatchMode="contains">
+                                            <f:facet name="header">
+                                                <h:outputText value="Id"/>
+                                            </f:facet>
+                                            <h:outputText value="#{fac.id}"/>
+                                        </p:column>
+                                        <p:column filterBy="#{fac.numero}" footerText="contains" filterMatchMode="contains">
+                                            <f:facet name="header">
+                                                <h:outputText value="NumeroFacture"/>
+                                            </f:facet>
+                                            <h:outputText value="#{fac.numero}"/>
+                                        </p:column>
+                                        <p:column filterBy="#{fac.datereglement}" footerText="contains" filterMatchMode="contains">
+                                            <f:facet name="header">
+                                                <h:outputText value="DateReglement"/>
+                                            </f:facet>
+                                            <h:outputText value="#{fac.datereglement}"/>
+                                        </p:column>
+                                        <p:column filterBy="#{fac.etat}" footerText="contains" filterMatchMode="contains">
+                                            <f:facet name="header">
+                                                <h:outputText value="status"/>
+                                            </f:facet>
+                                            <h:outputText value="#{fac.etat}"/>
+                                        </p:column>
+                                        <p:column filterBy="#{fac.montant}" footerText="contains" filterMatchMode="contains">
+                                            <f:facet name="header">
+                                                <h:outputText value="Montant"/>
+                                            </f:facet>
+                                            <h:outputText value="#{fac.montant}"/>
+                                        </p:column>
+
+                                    </p:dataTable>
+                                </p:panel>
+
+                            </fieldset>
+                            <fieldset>
+                                <legend>
+                                    Liste de facture non reglé et disponible
+                                </legend>
+                                <p:dataTable id="availableCars" var="car" value="#{chequeBeans.listeFacture}" selection="#{chequeBeans.dropFacture}" rowKey="#{car.id}" style="margin-bottom:0">
+                                    <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+
+                                    <p:column headerText="Id">
+                                        <h:outputText value="#{car.id}" />
+                                    </p:column>
+
+                                    <p:column headerText="Date">
+                                        <h:outputText value="#{car.datereglement}" />
+                                    </p:column>
+
+                                    <p:column headerText="fournisseur">
+                                        <h:outputText value="#{car.fournisseur.nom}" />
+                                    </p:column>
+
+                                    <p:column headerText="Numero">
+                                        <h:outputText value="#{car.numero}" />
+                                    </p:column>
+                                    <p:column headerText="Montant">
+                                        <h:outputText value="#{car.montant}" />
+                                    </p:column>
+                                </p:dataTable>
+
+                            </fieldset>
+                             <h:panelGrid border="0" columns="1" style="float: left">
+                                <p:commandButton value="save" icon="ui-icon-check" action="#{chequeBeans.edit()}" ajax="false"/>
+                            </h:panelGrid>
+                            <h:panelGrid border="0" columns="1" style="float: right">
+                                <p:commandButton value="cancel" icon="ui-icon-close" action="#{chequeBeans.cancel1()}" ajax="false"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </f:view>
+
+
+
+                </p:panel>
+            </div>
+            <div id="footer">
+                <ui:include src="../../WEB-INF/templ/templates/footer.xhtml"/>
+            </div>
+        </div>
+    </h:body>
+</html>
+

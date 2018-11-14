@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="TP4_css_file.css"/>
+    </h:head>
+    <h:body>
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewParam name="idinscription" value="#{chequeBeans.idcheque}" />
+                <f:viewAction action="#{chequeBeans.loadReglement()}"/> 
+            </f:metadata>
+        </ui:define>
+        <div id="tailleapp">
+            <h:form>
+                <p:megaMenu autoDisplay="true">
+                    <p:menuitem value="Accueil" url="../../principal_page.xhtml" icon="ui-icon-home"/>
+                    <p:menuitem value="Quitter" url="../../principal_page.xhtml" icon="ui-icon-close"/>
+                </p:megaMenu>
+            </h:form>
+            <br></br> 
+            <h3>Détail cheque</h3>
+            <div id="liste">
+
+                <f:view>
+
+
+                    <h:form>
+                        <fieldset>
+                            <legend>Information sur le cheque</legend>
+                            <h:panelGrid columns="2" border="0" width="80">
+                                <p:column>
+                                    <p:panelGrid columns="2" >
+                                        <p:outputLabel value="Id:" for="id" />
+                                        <p:outputLabel id="id" value="#{chequeBeans.cheque.id}" title="Id"  />
+                                        <p:outputLabel value="Datecheque:" for="datecheque" />
+                                        <p:outputLabel id="datecheque" value="#{chequeBeans.cheque.datecheque}" title="Datecheque" >
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </p:outputLabel>
+                                        <p:outputLabel value="Montant:" for="montant" />
+                                        <p:outputLabel id="montant" value="#{chequeBeans.cheque.montant}" title="Montant" />
+                                        <p:outputLabel value="Banque:" for="banque" />
+                                        <p:outputLabel id="banque" value="#{chequeBeans.cheque.banque.nom}" >
+                                            <!-- TODO: update below reference to list of available items-->
+
+                                        </p:outputLabel>
+                                        <p:outputLabel value="EstBaree:" for="estBaree" />
+                                        <p:outputLabel id="estBaree" value="#{chequeBeans.cheque.estBaree.libelle}" >
+                                            <!-- TODO: update below reference to list of available items-->
+
+                                        </p:outputLabel>
+                                        <p:outputLabel value="NumeroC:" for="numeroC" />
+                                        <p:outputLabel id="numeroC" value="#{chequeBeans.cheque.numeroCheque}" title="NumeroC" />
+                                        <p:outputLabel value="Compt:" for="compt" />
+                                        <p:outputLabel id="compt" value="#{chequeBeans.cheque.compt.nom}" >
+                                            <!-- TODO: update below reference to list of available items-->
+
+                                        </p:outputLabel>
+
+                                    </p:panelGrid>
+
+                                </p:column>
+                                <p:column>
+                                      <fieldset>
+                            <legend>
+                                Informtion sur le fournisseur
+                            </legend>
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="Fournisseur:" for="fournisseur" />
+                                <p:outputLabel id="fournisseur" value="#{chequeBeans.cheque.fournisseur.nom}" >
+                                    <!-- TODO: update below reference to list of available items-->
+
+                                </p:outputLabel>
+                                <p:outputLabel value="telephone" for="telephone" />
+                                <p:outputLabel id="telephone" value="#{chequeBeans.cheque.fournisseur.telephone}" />
+                                <p:outputLabel value="Email" for="email" />
+                                <p:outputLabel id="email" value="#{chequeBeans.cheque.fournisseur.email}" />
+                                <p:outputLabel value="Adresse" for="adresse" />
+                                <p:outputLabel id="adresse" value="#{chequeBeans.cheque.fournisseur.adresse}" />
+                            </p:panelGrid>
+
+                        </fieldset>
+                                </p:column>
+
+                            </h:panelGrid>
+
+
+
+
+
+                        </fieldset>
+                      
+                        <fieldset>
+                            <legend>Liste de facture reglé par ce chéque</legend>
+                            <p:panel rendered="#{chequeBeans.cheque.facture.size() > 0}" header="Liste de facture reglé par ce chéque"  >
+                                <p:dataTable id="tblfac" value="#{chequeBeans.cheque.facture}" var="fac">
+                                    <p:column filterBy="#{fac.id}" footerText="contains" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="Id"/>
+                                        </f:facet>
+                                        <h:outputText value="#{fac.id}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{fac.numero}" footerText="contains" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="NumeroFacture"/>
+                                        </f:facet>
+                                        <h:outputText value="#{fac.numero}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{fac.datereglement}" footerText="contains" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="DateReglement"/>
+                                        </f:facet>
+                                        <h:outputText value="#{fac.datereglement}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{fac.etat}" footerText="contains" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="status"/>
+                                        </f:facet>
+                                        <h:outputText value="#{fac.etat}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{fac.montant}" footerText="contains" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="Montant"/>
+                                        </f:facet>
+                                        <h:outputText value="#{fac.montant}"/>
+                                    </p:column>
+
+                                </p:dataTable>
+                            </p:panel>
+
+                        </fieldset>
+
+                        <p:commandButton value="imprimer" icon="ui-icon-print" action="#{chequeBeans.imprimerEtat(chequeBean.cheque)}" ajax="false"/>
+
+                    </h:form>
+                </f:view>
+
+
+            </div>
+            <div id="footer">
+                <ui:include src="../../WEB-INF/templ/templates/footer.xhtml"/>
+            </div>
+        </div>
+
+    </h:body>
+</html>
+
